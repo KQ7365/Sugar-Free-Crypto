@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const CryptoCurrencyList = () => {
   const [cryptocurrencies, setCryptocurrencies] = useState({});
@@ -25,6 +26,7 @@ export const CryptoCurrencyList = () => {
 
   return (
     <div>
+      <Link to="/">Home</Link>
       {Object.keys(cryptocurrencies).map((key) => (
         <div key={key}>
           <h3>{cryptocurrencies[key].name}</h3>
