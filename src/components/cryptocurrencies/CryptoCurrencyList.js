@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./Cryptocurrencies.css";
+import { cryptoCurrencyPost } from "../../services/CryptoCurrencyPost";
 
 export const CryptoCurrencyList = () => {
-  const [cryptocurrencies, setCryptocurrencies] = useState({});
+  const [cryptocurrencies, setCryptocurrencies] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -11,35 +11,45 @@ export const CryptoCurrencyList = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        const modifiedData = {};
-
-        for (const key in data) {
-          const price = data[key].usd.toFixed(2);
+        const modifiedData = Object.entries(data).map(([key, value]) => {
+          const price = value.usd.toFixed(2);
           const formattedPrice = parseFloat(price).toLocaleString(undefined, {
             minimumFractionDigits: 2,
           });
 
-          modifiedData[key] = {
+          return {
             name: key.charAt(0).toUpperCase() + key.slice(1),
             price: formattedPrice,
             isFavorite: false,
           };
-        }
+        });
+
         setCryptocurrencies(modifiedData);
       });
   }, []);
 
-  const handleFavoriteButtonToggle = (cryptocurrencies) => {
-    cryptocurrencies.isFavorite = true;
+  const handleAddToFavoritesButton = (name, price) => {
+    const newCryptoFavorite = {
+      name: name,
+      price: price,
+      isFavorite: true,
+    };
+    cryptoCurrencyPost(newCryptoFavorite);
   };
 
   return (
     <div className="forNow">
-      {Object.keys(cryptocurrencies).map((key) => (
-        <div className="eachCryptoItem" key={key}>
-          <h3>{cryptocurrencies[key].name}</h3>
-          <p className="eachPrice"> Price: ${cryptocurrencies[key].price}</p>
-          <button onClick={handleFavoriteButtonToggle}>Add to Favorites</button>
+      {cryptocurrencies.map((crypto) => (
+        <div className="eachCryptoItem" key={crypto.name}>
+          <h3>{crypto.name}</h3>
+          <p className="eachPrice"> Price: ${crypto.price}</p>
+          <button
+            onClick={() =>
+              handleAddToFavoritesButton(crypto.name, crypto.price)
+            }
+          >
+            Add to Favorites
+          </button>
         </div>
       ))}
     </div>
