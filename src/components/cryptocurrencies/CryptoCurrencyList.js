@@ -15,10 +15,13 @@ export const CryptoCurrencyList = () => {
 
         for (const key in data) {
           const price = data[key].usd.toFixed(2);
+          const formattedPrice = parseFloat(price).toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+          });
 
           modifiedData[key] = {
             name: key.charAt(0).toUpperCase() + key.slice(1),
-            price: price,
+            price: formattedPrice,
             isFavorite: false,
           };
         }
@@ -33,9 +36,9 @@ export const CryptoCurrencyList = () => {
   return (
     <div className="forNow">
       {Object.keys(cryptocurrencies).map((key) => (
-        <div key={key}>
+        <div className="eachCryptoItem" key={key}>
           <h3>{cryptocurrencies[key].name}</h3>
-          <p> Price: ${cryptocurrencies[key].price}</p>
+          <p className="eachPrice"> Price: ${cryptocurrencies[key].price}</p>
           <button onClick={handleFavoriteButtonToggle}>Add to Favorites</button>
         </div>
       ))}

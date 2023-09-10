@@ -1,0 +1,13 @@
+.navbar-item {
+  color: white;
+}
+.navbar-item:visited {
+  color: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  border: solid 2px white;
+  padding: 1.5em;
+}

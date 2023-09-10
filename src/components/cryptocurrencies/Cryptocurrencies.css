@@ -1,5 +1,13 @@
 .forNow {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
+  color: white;
+}
+
+.eachCryptoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+  border: solid 2px orange;
 }
