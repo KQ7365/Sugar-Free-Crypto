@@ -10,10 +10,6 @@
   color: white;
 }
 
-.card:hover {
-  animation: up-bump 0.4s ease;
-}
-
 .link-theme {
   color: white;
 }
