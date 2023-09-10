@@ -7,6 +7,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import { NavBar } from "../components/nav/NavBar";
 import { EducationList } from "../components/education/EducationList";
 import { MyPortfolio } from "../components/portfolio/MyPortfolio";
+import { LoginPage } from "../components/login/LoginPage";
 
 export const App = () => {
   return (
@@ -25,6 +26,7 @@ export const App = () => {
         <Route path="/cryptocurrencies" element={<CryptoCurrencyList />} />
         <Route path="/portfolio" element={<MyPortfolio />} />
       </Route>
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };

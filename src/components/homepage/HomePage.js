@@ -13,7 +13,7 @@ export const HomePageHTML = () => {
         <div className="card-body">
           <h1 className="card-title">Education</h1>
           <p className="card-text">Learn about Cryptocurrency</p>
-          <Link to="/" className="link-theme">
+          <Link to="education" className="link-theme">
             Education Page
           </Link>
         </div>
@@ -24,7 +24,7 @@ export const HomePageHTML = () => {
         <div className="card-body">
           <h1 className="card-title">Portfolio</h1>
           <p className="card-text">Manage your Cryptocurrencies</p>
-          <Link to="/" className="link-theme">
+          <Link to="portfolio" className="link-theme">
             Portfolio
           </Link>
         </div>
