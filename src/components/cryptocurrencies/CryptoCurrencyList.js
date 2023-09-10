@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./Cryptocurrencies.css";
 
 export const CryptoCurrencyList = () => {
   const [cryptocurrencies, setCryptocurrencies] = useState({});
@@ -13,24 +14,29 @@ export const CryptoCurrencyList = () => {
         const modifiedData = {};
 
         for (const key in data) {
-          const price = data[key].usd;
+          const price = data[key].usd.toFixed(2);
 
           modifiedData[key] = {
             name: key.charAt(0).toUpperCase() + key.slice(1),
             price: price,
+            isFavorite: false,
           };
         }
         setCryptocurrencies(modifiedData);
       });
   }, []);
 
+  const handleFavoriteButtonToggle = (cryptocurrencies) => {
+    cryptocurrencies.isFavorite = true;
+  };
+
   return (
-    <div>
-      <Link to="/">Home</Link>
+    <div className="forNow">
       {Object.keys(cryptocurrencies).map((key) => (
         <div key={key}>
           <h3>{cryptocurrencies[key].name}</h3>
-          <p>Price: {cryptocurrencies[key].price}</p>
+          <p> Price: ${cryptocurrencies[key].price}</p>
+          <button onClick={handleFavoriteButtonToggle}>Add to Favorites</button>
         </div>
       ))}
     </div>
