@@ -1,6 +1,4 @@
-import { getAllCryptoTokens } from "../services/cryptoToken";
 import "./App.css";
-import { useEffect, useState } from "react";
 import { CryptoCurrencyList } from "../components/cryptocurrencies/CryptoCurrencyList";
 import { HomePageHTML } from "../components/homepage/HomePage";
 import { Routes, Route, Outlet } from "react-router-dom";

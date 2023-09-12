@@ -22,7 +22,7 @@ export const NavBar = () => {
         </li>
         <li className="navbar-item">
           <Link className="navbar-item" to="/portfolio">
-            My Portfolio
+            Favorites
           </Link>
         </li>
         <li className="navbar-item">

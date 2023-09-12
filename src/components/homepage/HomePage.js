@@ -22,10 +22,10 @@ export const HomePageHTML = () => {
       <div className="card">
         <img src="briefcase.png" className="card-img-top" alt="logo"></img>
         <div className="card-body">
-          <h1 className="card-title">Portfolio</h1>
+          <h1 className="card-title">Favorites Dashboard</h1>
           <p className="card-text">Manage your Cryptocurrencies</p>
           <Link to="portfolio" className="link-theme">
-            Portfolio
+            Favorites
           </Link>
         </div>
       </div>
