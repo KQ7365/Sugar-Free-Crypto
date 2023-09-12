@@ -21,7 +21,6 @@ export const CryptoCurrencyList = () => {
             return {
               name: key.charAt(0).toUpperCase() + key.slice(1),
               price: formattedPrice,
-              isFavorite: false,
             };
           });
 
@@ -42,7 +41,6 @@ export const CryptoCurrencyList = () => {
     const newCryptoFavorite = {
       name: name,
       price: price,
-      isFavorite: true,
     };
     cryptoCurrencyPost(newCryptoFavorite);
   };
