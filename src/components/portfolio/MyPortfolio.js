@@ -13,18 +13,19 @@ export const MyPortfolio = () => {
 
   const handleSelectChange = (event) => {
     const cryptoNameCopy = { ...cryptoNameSelect };
-    cryptoNameCopy[event.target.name] = event.target.value;
+
+    cryptoNameCopy.name = event.target.value;
     setCryptoNameSelect(cryptoNameCopy);
   };
 
   return (
     <form>
       <fieldset>
-        <select onChange={handleSelectChange}>
-          <option>Choose an option</option>
+        <select onChange={handleSelectChange} value={favoriteCryptoList.id}>
+          <option value="0">Choose an option</option>
           {favoriteCryptoList.map((favObj) => {
             return (
-              <option key={favObj.id} value={favObj.name}>
+              <option key={favObj.id} value={favObj.id && favObj.name}>
                 {favObj.name}
               </option>
             );
