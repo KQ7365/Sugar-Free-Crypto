@@ -1,30 +1,27 @@
 import "./App.css";
-import { CryptoCurrencyList } from "../components/cryptocurrencies/CryptoCurrencyList";
-import { HomePageHTML } from "../components/homepage/HomePage";
-import { Routes, Route, Outlet } from "react-router-dom";
-import { NavBar } from "../components/nav/NavBar";
-import { EducationList } from "../components/education/EducationList";
-import { MyPortfolio } from "../components/portfolio/MyPortfolio";
-import { LoginPage } from "../components/login/LoginPage";
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { Login } from "../components/auth/Login";
+import { Register } from "../components/auth/Register";
+import { Authorized } from "../views/Authorized";
+import { ApplicationViews } from "../views/ApplicationViews";
 
 export const App = () => {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
       <Route
-        path="/"
+        path="*"
         element={
-          <>
-            <NavBar />
-            <Outlet />
-          </>
+          //checking if user authorized
+          <Authorized>
+            <ApplicationViews />
+          </Authorized>
         }
-      >
-        <Route path="/" element={<HomePageHTML />} />
-        <Route path="/education" element={<EducationList />} />
-        <Route path="/cryptocurrencies" element={<CryptoCurrencyList />} />
-        <Route path="/portfolio" element={<MyPortfolio />} />
-      </Route>
-      <Route path="/login" element={<LoginPage />} />
+      />
     </Routes>
   );
 };

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 
 export const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <header>
       <ul className="navbar">
@@ -25,11 +27,22 @@ export const NavBar = () => {
             Favorites
           </Link>
         </li>
-        <li className="navbar-item">
-          <Link className="navbar-item" to="/login">
-            LOGOUT
-          </Link>
-        </li>
+        {localStorage.getItem("crypto_user") ? (
+          <li className="navbar-item">
+            <Link
+              className="navbar-item"
+              to="/login"
+              onClick={() => {
+                localStorage.removeItem("crypto_user");
+                navigate("/login", { replace: true });
+              }}
+            >
+              LOGOUT
+            </Link>
+          </li>
+        ) : (
+          ""
+        )}
       </ul>
     </header>
   );
