@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Cryptocurrencies.css";
 import { cryptoCurrencyPost } from "../../services/CryptoCurrencyPost";
 
-export const CryptoCurrencyList = () => {
+export const CryptoCurrencyList = ({ currentUser }) => {
   const [cryptocurrencies, setCryptocurrencies] = useState([]);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export const CryptoCurrencyList = () => {
     const newCryptoFavorite = {
       name: name,
       price: price,
+      userId: { currentUser }, //TODO: Add a userParams for this u dumbass
     };
     cryptoCurrencyPost(newCryptoFavorite);
   };
@@ -53,7 +54,11 @@ export const CryptoCurrencyList = () => {
           <p className="eachPrice"> Price: ${crypto.price}</p>
           <button
             onClick={() =>
-              handleAddToFavoritesButton(crypto.name, crypto.price)
+              handleAddToFavoritesButton(
+                crypto.name,
+                crypto.price,
+                crypto.userId
+              )
             }
           >
             Add to Favorites

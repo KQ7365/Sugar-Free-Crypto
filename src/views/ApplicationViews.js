@@ -28,10 +28,19 @@ export const ApplicationViews = () => {
           </>
         }
       >
-        <Route path="/" element={<HomePageHTML />} />
-        <Route path="/education" element={<EducationList />} />
-        <Route path="/cryptocurrencies" element={<CryptoCurrencyList />} />
-        <Route path="/portfolio" element={<MyPortfolio />} />
+        <Route path="/" element={<HomePageHTML currentUser={currentUser} />} />
+        <Route
+          path="/education"
+          element={<EducationList currentUser={currentUser} />}
+        />
+        <Route
+          path="/cryptocurrencies"
+          element={<CryptoCurrencyList currentUser={currentUser} />}
+        />
+        <Route
+          path="/portfolio"
+          element={<MyPortfolio currentUser={currentUser} />}
+        />
       </Route>
       <Route path="/login" element={<LoginPage />} />
     </Routes>
