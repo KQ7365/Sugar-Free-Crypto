@@ -6,7 +6,9 @@ export const MyPortfolio = ({ currentUser }) => {
   const [newCryptoObject, setNewCryptoObject] = useState({
     cryptoName: "",
     note: "",
+    image: "",
     favoriteId: 0,
+    currentUserId: { currentUser },
   });
 
   useEffect(() => {
@@ -18,22 +20,34 @@ export const MyPortfolio = ({ currentUser }) => {
     });
   }, [currentUser]);
 
-  const handleSelectChange = (cryptoNameSelectEvent) => {
-    const cryptoNameCopy = { ...newCryptoObject };
-    cryptoNameCopy.cryptoName = cryptoNameSelectEvent.target.value;
-    setNewCryptoObject(cryptoNameCopy);
-  };
+  // const handleSelectChange = (cryptoNameSelectEvent) => {
+  //   const cryptoNameCopy = { ...newCryptoObject };
+  //   cryptoNameCopy.cryptoName = cryptoNameSelectEvent.target.value;
+  //   setNewCryptoObject(cryptoNameCopy);
+  // };
 
-  const handleInputChange = (noteInputEvent) => {
-    const noteCopy = { ...newCryptoObject };
-    noteCopy.note = noteInputEvent.target.value;
-    setNewCryptoObject(noteCopy);
+  // const handleInputChange = (noteInputEvent) => {
+  //   const noteCopy = { ...newCryptoObject };
+  //   noteCopy.note = noteInputEvent.target.value;
+  //   setNewCryptoObject(noteCopy);
+  // };
+
+  // const handleImageChange = (imageInputEvent) => {
+  //   const imageCopy = { ...newCryptoObject };
+  //   imageCopy.image = imageInputEvent.target.value;
+  //   setNewCryptoObject(imageCopy);
+  // };
+
+  const handleInputChange = (e) => {
+    const itemCopy = { ...newCryptoObject };
+    itemCopy[e.target.name] = e.target.value;
+    setNewCryptoObject(itemCopy);
   };
 
   return (
     <form>
       <fieldset>
-        <select onChange={handleSelectChange} value={favoriteCryptoList.id}>
+        <select onChange={handleInputChange} name="cryptoName">
           <option value="0">Choose one of your crypto favorites</option>
           {favoriteCryptoList.map((favObj) => {
             return (
@@ -53,6 +67,18 @@ export const MyPortfolio = ({ currentUser }) => {
           type="text"
           className="setLater"
           placeholder=""
+          onChange={handleInputChange}
+        ></input>
+      </fieldset>
+
+      <fieldset>
+        <label>Enter image link</label>
+        <input
+          name="image"
+          required
+          type="text"
+          className="setLater"
+          placeholder="https://www.example.com"
           onChange={handleInputChange}
         ></input>
       </fieldset>
