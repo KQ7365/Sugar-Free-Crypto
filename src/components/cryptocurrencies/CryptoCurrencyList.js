@@ -39,7 +39,7 @@ export const CryptoCurrencyList = ({ currentUser }) => {
 
   const handleAddToFavoritesButton = (name, price) => {
     const newCryptoFavorite = {
-      name: name,
+      cryptoName: name,
       price: price,
       userId: { currentUser }, //TODO: Add a userParams for this u dumbass
     };
