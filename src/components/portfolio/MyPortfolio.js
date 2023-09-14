@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CryptoFavoriteList } from "../../services/CryptoFavoriteList";
+import { NotesPost } from "../../services/NotesPost";
 
 export const MyPortfolio = ({ currentUser }) => {
   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
@@ -7,7 +8,6 @@ export const MyPortfolio = ({ currentUser }) => {
     cryptoName: "",
     note: "",
     image: "",
-    favoriteId: 0,
     currentUserId: { currentUser },
   });
 
@@ -20,34 +20,33 @@ export const MyPortfolio = ({ currentUser }) => {
     });
   }, [currentUser]);
 
-  // const handleSelectChange = (cryptoNameSelectEvent) => {
-  //   const cryptoNameCopy = { ...newCryptoObject };
-  //   cryptoNameCopy.cryptoName = cryptoNameSelectEvent.target.value;
-  //   setNewCryptoObject(cryptoNameCopy);
-  // };
-
-  // const handleInputChange = (noteInputEvent) => {
-  //   const noteCopy = { ...newCryptoObject };
-  //   noteCopy.note = noteInputEvent.target.value;
-  //   setNewCryptoObject(noteCopy);
-  // };
-
-  // const handleImageChange = (imageInputEvent) => {
-  //   const imageCopy = { ...newCryptoObject };
-  //   imageCopy.image = imageInputEvent.target.value;
-  //   setNewCryptoObject(imageCopy);
-  // };
-
   const handleInputChange = (e) => {
     const itemCopy = { ...newCryptoObject };
     itemCopy[e.target.name] = e.target.value;
     setNewCryptoObject(itemCopy);
   };
 
+  const handleAddNotesClick = (e) => {
+    e.preventDefault();
+
+    const newNotesItem = {
+      name: newCryptoObject.cryptoName,
+      note: newCryptoObject.note,
+      imageUrl: newCryptoObject.image,
+      currentUser: { currentUser },
+    };
+
+    NotesPost(newNotesItem);
+  };
+
   return (
     <form>
       <fieldset>
-        <select onChange={handleInputChange} name="cryptoName">
+        <select
+          onChange={handleInputChange}
+          name="cryptoName"
+          value={favoriteCryptoList.id}
+        >
           <option value="0">Choose one of your crypto favorites</option>
           {favoriteCryptoList.map((favObj) => {
             return (
@@ -82,6 +81,8 @@ export const MyPortfolio = ({ currentUser }) => {
           onChange={handleInputChange}
         ></input>
       </fieldset>
+
+      <button onClick={handleAddNotesClick}>Add Note</button>
     </form>
   );
 };
