@@ -1,5 +1,7 @@
 .navbar-item {
   color: white;
+  font-size: 1.5rem;
+  font-family: "Outfit", sans-serif;
 }
 .navbar-item:visited {
   color: none;
@@ -8,6 +10,7 @@
 .navbar {
   display: flex;
   justify-content: space-evenly;
-  border: solid 2px white;
+  border: solid 4px white;
+  border-radius: 10px;
   padding: 1.5em;
 }

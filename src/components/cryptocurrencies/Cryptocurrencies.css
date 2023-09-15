@@ -9,5 +9,10 @@
   display: flex;
   justify-content: space-between;
   padding: 3rem;
-  border: solid 2px orange;
+  border: solid 2px white;
+  border-radius: 3rem;
+}
+
+.card-img-top {
+  width: 60%;
 }

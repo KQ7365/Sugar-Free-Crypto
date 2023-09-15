@@ -1,7 +1,7 @@
 import { NavBar } from "../components/nav/NavBar";
 import { EducationList } from "../components/education/EducationList";
 import { MyPortfolio } from "../components/portfolio/MyPortfolio";
-import { LoginPage } from "../components/login/LoginPage";
+import { Login } from "../components/auth/Login";
 import { Routes, Route, Outlet } from "react-router-dom";
 import { CryptoCurrencyList } from "../components/cryptocurrencies/CryptoCurrencyList";
 import { HomePageHTML } from "../components/homepage/HomePage";
@@ -42,7 +42,7 @@ export const ApplicationViews = () => {
           element={<MyPortfolio currentUser={currentUser} />}
         />
       </Route>
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 };

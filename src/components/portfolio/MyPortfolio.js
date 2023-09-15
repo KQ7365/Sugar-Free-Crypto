@@ -40,49 +40,68 @@ export const MyPortfolio = ({ currentUser }) => {
   };
 
   return (
-    <form>
-      <fieldset>
-        <select
-          onChange={handleInputChange}
-          name="cryptoName"
-          value={favoriteCryptoList.id}
-        >
-          <option value="0">Choose one of your crypto favorites</option>
+    <div>
+      <body>
+        <div>
+          <h1>Favorite Resources</h1>
+        </div>
+        <div>
+          <h1>Favorite Cryptocurrencies</h1>
           {favoriteCryptoList.map((favObj) => {
             return (
-              <option key={favObj.id} value={favObj.cryptoName}>
-                {favObj.cryptoName}
-              </option>
+              <div key={favObj.id} value={favObj.cryptoName}>
+                {favObj.cryptoName} {favObj.price}
+              </div>
             );
           })}
-        </select>
-      </fieldset>
+        </div>
+      </body>
 
-      <fieldset>
-        <label>Enter Notes</label>
-        <input
-          name="note"
-          required
-          type="text"
-          className="setLater"
-          placeholder=""
-          onChange={handleInputChange}
-        ></input>
-      </fieldset>
+      <form>
+        <fieldset>
+          <select
+            onChange={handleInputChange}
+            name="cryptoName"
+            value={favoriteCryptoList.id}
+          >
+            <option value="0">Choose one of your crypto favorites</option>
+            {favoriteCryptoList.map((favObj) => {
+              return (
+                <option key={favObj.id} value={favObj.cryptoName}>
+                  {favObj.cryptoName}
+                </option>
+              );
+            })}
+          </select>
+        </fieldset>
 
-      <fieldset>
-        <label>Enter image link</label>
-        <input
-          name="image"
-          required
-          type="text"
-          className="setLater"
-          placeholder="https://www.example.com"
-          onChange={handleInputChange}
-        ></input>
-      </fieldset>
+        <fieldset>
+          <label>Enter Notes</label>
+          <textarea
+            name="note"
+            rows={6}
+            required
+            type="text"
+            className="setLater"
+            placeholder=""
+            onChange={handleInputChange}
+          ></textarea>
+        </fieldset>
 
-      <button onClick={handleAddNotesClick}>Add Note</button>
-    </form>
+        <fieldset>
+          <label>Enter image link</label>
+          <input
+            name="image"
+            required
+            type="text"
+            className="setLater"
+            placeholder="https://www.example.com"
+            onChange={handleInputChange}
+          ></input>
+        </fieldset>
+
+        <button onClick={handleAddNotesClick}>Add Note</button>
+      </form>
+    </div>
   );
 };
