@@ -1,6 +1,7 @@
 .card-parent-div {
   display: flex;
   justify-content: space-evenly;
+  padding: 0 2rem 2rem 2rem;
 }
 .card {
   text-align: center;
@@ -11,6 +12,18 @@
   font-size: 2rem;
   font-family: "Outfit", sans-serif;
 }
+.card:hover {
+  border: 8px solid yellow;
+  background-color: orange;
+  opacity: 1;
+}
+
+.cardMain:hover {
+  border: 8px solid yellow;
+  background-color: orange;
+  opacity: 1;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -19,11 +32,13 @@
 
 .headText {
   color: white;
-  font-size: 5rem;
+  font-size: 7rem;
   font-family: "Outfit", sans-serif;
   text-align: center;
-  flex: 1;
+  flex: 0;
   min-width: 0;
+  padding-left: 3rem;
+  padding-bottom: 4rem;
 }
 
 .cardMain {
@@ -41,4 +56,10 @@
 }
 .link:visited {
   color: none;
+}
+
+.changeMe {
+  color: orange;
+  text-decoration: underline;
+  -webkit-text-stroke: 3px;
 }

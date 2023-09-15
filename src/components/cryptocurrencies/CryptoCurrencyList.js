@@ -41,30 +41,37 @@ export const CryptoCurrencyList = ({ currentUser }) => {
     const newCryptoFavorite = {
       cryptoName: name,
       price: price,
-      userId: { currentUser }, //TODO: Add a userParams for this u dumbass
+      userId: { currentUser },
     };
     cryptoCurrencyPost(newCryptoFavorite);
   };
 
   return (
-    <div className="forNow">
-      {cryptocurrencies.map((crypto) => (
-        <div className="eachCryptoItem" key={crypto.name}>
-          <h3>{crypto.name}</h3>
-          <p className="eachPrice"> Price: ${crypto.price}</p>
-          <button
-            onClick={() =>
-              handleAddToFavoritesButton(
-                crypto.name,
-                crypto.price,
-                crypto.userId
-              )
-            }
-          >
-            Add to Favorites
-          </button>
-        </div>
-      ))}
-    </div>
+    <main>
+      <div className="header-container">
+        <h1 className="headText">Available Crypto </h1>
+        <img className="mainIMG" alt="cyber img" src="other.png" />
+      </div>
+      <div className="forNow">
+        {cryptocurrencies.map((crypto) => (
+          <div className="eachCryptoItem" key={crypto.name}>
+            <h3>{crypto.name}</h3>
+            <p className="eachPrice"> Price: ${crypto.price}</p>
+            <button
+              class="login-btn btn-info"
+              onClick={() =>
+                handleAddToFavoritesButton(
+                  crypto.name,
+                  crypto.price,
+                  crypto.userId
+                )
+              }
+            >
+              Add to Favorites
+            </button>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 };
