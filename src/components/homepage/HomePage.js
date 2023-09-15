@@ -5,7 +5,9 @@ export const HomePageHTML = () => {
   return (
     <main>
       <div className="header-container">
-        <h1 className="headText">Sugar Free Crypto Launchpad</h1>
+        <h1 className="headText">
+          Sugar Free Crypto <span className="changeMe">Launchpad</span>
+        </h1>
         <img
           className="mainIMG"
           alt="cyber img"
@@ -51,7 +53,7 @@ export const HomePageHTML = () => {
           ></img>
           <div className="card-body">
             <h1 className="card-title">Cryptocurrencies</h1>
-            <p className="card-text">See all Cryptocurrencies</p>
+            <p className="card-text">See all Cryptocurrencies available</p>
 
             <Link to="/cryptocurrencies" className="link-theme">
               Cryptocurrency List

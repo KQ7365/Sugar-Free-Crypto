@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center; */
   color: white;
+  padding: 0 2rem 2rem 2rem;
 }
 
 .eachCryptoItem {

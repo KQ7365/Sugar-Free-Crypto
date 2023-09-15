@@ -5,7 +5,7 @@ import "./NavBar.css";
 export const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <header>
+    <header className="navbarOuter">
       <ul className="navbar">
         <li className="navbar-item">
           <Link className="navbar-item" to="/">
