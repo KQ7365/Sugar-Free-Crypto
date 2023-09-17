@@ -29,21 +29,21 @@ export const Login = () => {
   };
 
   return (
-    <div class="backgroundLogin">
+    <div className="backgroundLogin">
       <img alt="cyberpunk" src="light-blue copy.png" class="loginIMG" />
-      <div class="container-login">
+      <div className="container-login">
         <div className="headerText">
           <h1>Sugar Free Crypto</h1>
           <h2>Please sign in</h2>
         </div>
-        <form class="form-login" onSubmit={handleLogin}>
+        <form className="form-login" onSubmit={handleLogin}>
           <fieldset>
-            <div class="form-group">
+            <div className="form-group">
               <input
                 type="email"
                 value={email}
                 onChange={(evt) => set(evt.target.value)}
-                class="form-control"
+                className="form-control"
                 placeholder="Email address"
                 required
                 autoFocus
@@ -51,8 +51,8 @@ export const Login = () => {
             </div>
           </fieldset>
           <fieldset>
-            <div class="form-group">
-              <button class="login-btn btn-info" type="submit">
+            <div className="form-group">
+              <button className="login-btn btn-info" type="submit">
                 Sign in
               </button>
             </div>
