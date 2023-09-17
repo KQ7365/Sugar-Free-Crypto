@@ -11,7 +11,6 @@ export const MyPortfolio = ({ currentUser }) => {
     cryptoName: "",
     note: "",
     resourceUrl: "",
-    currentUserId: { currentUser },
   });
 
   useEffect(() => {
@@ -53,14 +52,36 @@ export const MyPortfolio = ({ currentUser }) => {
         cryptoName: "",
         note: "",
         resourceUrl: "",
-        currentUserId: { currentUser },
+        currentUser: { currentUser },
       });
     });
   };
 
+  const handleDeleteItemClick = (id) => {
+    fetch(`http://localhost:8089/notes/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Item successfully deleted, update the cryptoNotesItem array
+          setCryptoNotesItem((prevNotes) =>
+            prevNotes.filter((note) => note.id !== id)
+          );
+        } else {
+          throw new Error("Failed to delete item");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div>
-      <body className="favoriteCardParentDiv">
+      <div className="favoriteCardParentDiv">
         <div className="favoriteCard">
           <h1>Favorite Links</h1>
         </div>
@@ -68,17 +89,20 @@ export const MyPortfolio = ({ currentUser }) => {
           <h1>Favorite Crypto</h1>
           {favoriteCryptoList.map((favObj) => {
             return (
-              <div key={favObj.id} value={favObj.cryptoName}>
+              <div key={favObj.id} value={favObj.id}>
                 Crypto: {favObj.cryptoName} | Price: {favObj.price}
               </div>
             );
           })}
         </div>
-      </body>
+      </div>
 
       <div className="wholeEntry">
         <form>
           <fieldset>
+            <div className="favoriteCard">
+              <h2>Create a Crypto Reference Item</h2>
+            </div>
             <select
               onChange={handleInputChange}
               name="cryptoName"
@@ -125,16 +149,23 @@ export const MyPortfolio = ({ currentUser }) => {
           <button onClick={handleAddNotesClick}>Add Note</button>
         </form>
       </div>
-      <div>
-        <h2>Crypto Notes</h2>
+      <div className="favoriteCardParentDiv">
+        <div className="favoriteCard">
+          <h2>Crypto Notes</h2>
+        </div>
       </div>
-      <div>
+      <div className="wholeEntry">
         {cryptoNotesItem.map((noteObj) => {
           return (
-            <div key={noteObj.id} value={noteObj.id}>
+            <div className="favoriteCard" key={noteObj.id} value={noteObj.id}>
               Crypto: {noteObj.name}
               Notes: {noteObj.note}
               Resource Url: {noteObj.resource}
+              <div>
+                <button onClick={() => handleDeleteItemClick(noteObj.id)}>
+                  Delete Item
+                </button>
+              </div>
             </div>
           );
         })}
