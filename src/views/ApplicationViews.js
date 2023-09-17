@@ -6,6 +6,8 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import { CryptoCurrencyList } from "../components/cryptocurrencies/CryptoCurrencyList";
 import { HomePageHTML } from "../components/homepage/HomePage";
 import { useEffect, useState } from "react";
+import { EditNote } from "../components/edit/EditNote";
+import { NoteDetails } from "../components/notedetails/NoteDetails";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -39,9 +41,18 @@ export const ApplicationViews = () => {
         />
         <Route
           path="/portfolio"
+          index
           element={<MyPortfolio currentUser={currentUser} />}
         />
+        <Route path="notes">
+          <Route path=":notesId" element={<NoteDetails />} />
+          <Route
+            path=":notesId/edit"
+            element={<EditNote currentUser={currentUser} />}
+          />
+        </Route>
       </Route>
+
       <Route path="/login" element={<Login />} />
     </Routes>
   );
