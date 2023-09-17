@@ -3,6 +3,7 @@ import { CryptoFavoriteList } from "../../services/CryptoFavoriteList";
 import { NotesPost } from "../../services/NotesPost";
 import "./MyPortfolio.css";
 import { favoriteResourceService } from "../../services/favoriteService";
+import { useNavigate } from "react-router-dom";
 
 export const MyPortfolio = ({ currentUser }) => {
   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
@@ -12,6 +13,8 @@ export const MyPortfolio = ({ currentUser }) => {
     note: "",
     resourceUrl: "",
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     CryptoFavoriteList().then((favorites) => {
@@ -164,6 +167,15 @@ export const MyPortfolio = ({ currentUser }) => {
               <div>
                 <button onClick={() => handleDeleteItemClick(noteObj.id)}>
                   Delete Item
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={() => {
+                    navigate(`/notes/${noteObj.id}`);
+                  }}
+                >
+                  View Details
                 </button>
               </div>
             </div>
