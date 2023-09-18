@@ -132,8 +132,9 @@ export const MyPortfolio = ({ currentUser }) => {
           </fieldset>
 
           <fieldset>
-            <label>Enter Notes</label>
+            <label htmlFor="note">Enter Notes</label>
             <textarea
+              id="note"
               name="note"
               rows={6}
               required
@@ -146,8 +147,9 @@ export const MyPortfolio = ({ currentUser }) => {
           </fieldset>
 
           <fieldset>
-            <label>Enter Resource Url</label>
+            <label htmlFor="resourceUrl">Enter Resource Url</label>
             <input
+              id="resourceUrl"
               value={newCryptoObject.resourceUrl}
               name="resourceUrl"
               required
@@ -191,14 +193,18 @@ export const MyPortfolio = ({ currentUser }) => {
                     View Details
                   </button>
                 </div>
-                <TwitterShareButton
-                  url={
-                    "www.sugarfreecrypto.com/favorites/BitcoinNote" +
-                    " I think I found the next cryptocurrency going to the moon! Go check out my page. I have all the notes you need about it!🚀🌛 #NSS #C66 #Val #Dave #Derek #ThankYouForWatching"
-                  }
-                >
-                  <button className="twitterButton">Add Some Sugar</button>
-                </TwitterShareButton>
+                <div className="customNoteCardTwitter">
+                  <TwitterShareButton
+                    className="twitterShareButton"
+                    url={
+                      "www.sugarfreecrypto.com/favorites/BitcoinNote" +
+                      " I think I found the next cryptocurrency going to the moon! Go check out my page. I have all the notes you need about it!🚀🌛 #NSS #C66 #Val #Dave #Derek #ThankYouForWatching"
+                    }
+                  >
+                    Add Some Sugar
+                  </TwitterShareButton>
+                </div>
+
                 <div>
                   <button
                     className="deleteButton"

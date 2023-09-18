@@ -126,8 +126,13 @@ select:focus {
   color: white;
 }
 
-.twitterButton {
+.customNoteCardTwitter {
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: white;
   background-color: blue;
+  font-size: 1rem;
+  font-family: "Outfit", sans-serif;
 }
 
 .deleteButton {

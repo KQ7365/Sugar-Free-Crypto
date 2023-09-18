@@ -1,0 +1,47 @@
+.resourceBorder {
+  border: solid #ffae42;
+  border-radius: 5rem;
+  background-color: #ffae42;
+  margin: 8%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: "Outfit", sans-serif;
+}
+
+.resourceIMG {
+  width: 475px;
+  height: 475px;
+  margin-right: 10px;
+  border-radius: 5rem;
+}
+
+.resourceItems {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  gap: 10px;
+}
+
+.divItem {
+  font-size: 2.5rem;
+  padding-top: 2rem;
+}
+
+.linkCSS {
+  color: white;
+  font-size: 2rem;
+}
+
+.linkButton {
+  background-color: black;
+  border: none;
+  width: 40%;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10rem;
+}
+.resourceLink {
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
+}

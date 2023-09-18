@@ -1,6 +1,7 @@
 .forNow {
   color: white;
   padding: 0 2rem 2rem 2rem;
+  font-size: 1rem;
 }
 
 .eachCryptoItem {
@@ -9,6 +10,8 @@
   padding: 3rem;
   border: solid 2px white;
   border-radius: 3rem;
+  margin: 2rem;
+  font-size: 1.2rem;
 }
 
 .card-img-top {
