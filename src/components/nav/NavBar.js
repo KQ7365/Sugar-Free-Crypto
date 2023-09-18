@@ -37,7 +37,7 @@ export const NavBar = () => {
                 navigate("/login", { replace: true });
               }}
             >
-              LOGOUT
+              Logout
             </Link>
           </li>
         ) : (

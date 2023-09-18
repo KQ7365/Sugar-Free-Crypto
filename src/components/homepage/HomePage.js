@@ -29,22 +29,6 @@ export const HomePageHTML = () => {
             </Link>
           </div>
         </div>
-
-        <div className="cardMain">
-          <img
-            src="cyberpunk-bitcoin-collection-coins.png"
-            className="card-img-top"
-            alt="logo"
-          ></img>
-          <div className="card-body">
-            <h1 className="card-title">Favorites</h1>
-            <p className="card-text">Manage your Cryptocurrencies</p>
-            <Link to="portfolio" className="link-theme">
-              Favorites
-            </Link>
-          </div>
-        </div>
-
         <div className="card">
           <img
             src="cyberpunk-bitcoin-macine.png"
@@ -57,6 +41,20 @@ export const HomePageHTML = () => {
 
             <Link to="/cryptocurrencies" className="link-theme">
               Cryptocurrency List
+            </Link>
+          </div>
+        </div>
+        <div className="cardMain">
+          <img
+            src="cyberpunk-bitcoin-collection-coins.png"
+            className="card-img-top"
+            alt="logo"
+          ></img>
+          <div className="card-body">
+            <h1 className="card-title">Favorites</h1>
+            <p className="card-text">Manage all your Cryptocurrency Items</p>
+            <Link to="portfolio" className="link-theme">
+              Favorites
             </Link>
           </div>
         </div>
