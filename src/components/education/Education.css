@@ -1,25 +1,28 @@
-.resourceBorder {
-  border: solid #ffae42;
-  border-radius: 5rem;
+.resourceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 3rem;
+}
+
+.resourceItem {
+  display: flex;
+  gap: 20px;
   background-color: #ffae42;
-  margin: 8%;
+  border-radius: 5rem;
   padding: 1rem;
-  font-size: 1.5rem;
-  font-family: "Outfit", sans-serif;
+}
+
+.resourceContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .resourceIMG {
   width: 475px;
   height: 475px;
-  margin-right: 10px;
   border-radius: 5rem;
-}
-
-.resourceItems {
-  display: grid;
-  grid-template-columns: 1fr auto;
-
-  gap: 10px;
 }
 
 .divItem {
@@ -39,9 +42,5 @@
   font-size: 14px;
   cursor: pointer;
   margin-left: 10rem;
-}
-.resourceLink {
-  padding-left: 2rem;
-  display: flex;
-  align-items: center;
+  margin-top: 2rem;
 }
