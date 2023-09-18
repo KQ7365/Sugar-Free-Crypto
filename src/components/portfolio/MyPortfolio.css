@@ -57,6 +57,10 @@
 }
 
 .noteDivItem {
+  text-align: justify;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
 }
 
 .entryForm {
@@ -133,4 +137,9 @@ select:focus {
 .buttonAlign {
   display: flex;
   justify-content: space-evenly;
+  padding: 15px 65px;
+}
+
+.editTitle {
+  color: white;
 }

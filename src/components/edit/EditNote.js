@@ -31,10 +31,10 @@ export const EditNote = ({ currentUser }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h3 className="set">Cryptocurrency: {item.name}</h3>
-      </div>
+    <div className="wholeEntry">
+      <h1 className="editTitle">
+        <u>Cryptocurrency:</u> <b>{item.name}</b>
+      </h1>
 
       <fieldset>
         <label>Enter Notes</label>

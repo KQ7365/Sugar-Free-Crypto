@@ -87,10 +87,14 @@ export const MyPortfolio = ({ currentUser }) => {
     <div>
       <div className="favoriteCardParentDiv">
         <div className="favoriteCard">
-          <h1>Favorite Links</h1>
+          <h1>
+            <u>Favorite Links</u>
+          </h1>
         </div>
         <div className="favoriteCard">
-          <h1>Favorite Crypto</h1>
+          <h1>
+            <u>Favorite Crypto</u>
+          </h1>
           {favoriteCryptoList.map((favObj) => {
             return (
               <div key={favObj.id} value={favObj.id}>
@@ -105,7 +109,9 @@ export const MyPortfolio = ({ currentUser }) => {
         <form className="createNoteBorder">
           <fieldset>
             <div className="favoriteCardChange">
-              <h2>Create a Cryptocurrency Note</h2>
+              <h2>
+                <u>Create a Cryptocurrency Note</u>
+              </h2>
             </div>
             <select
               onChange={handleInputChange}
@@ -157,7 +163,9 @@ export const MyPortfolio = ({ currentUser }) => {
       </div>
       <div className="favoriteCardParentDiv">
         <div className="favoriteCardNotes">
-          <h2>Cryptocurrency Notes</h2>
+          <h2>
+            <u>Cryptocurrency Notes</u>
+          </h2>
         </div>
       </div>
       <div className="wholeEntry">

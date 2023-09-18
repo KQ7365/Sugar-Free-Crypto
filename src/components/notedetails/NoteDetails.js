@@ -15,24 +15,37 @@ export const NoteDetails = () => {
   }, [notesId]);
 
   return (
-    <div>
-      <h3 className="set">Cryptocurrency: {item.name}</h3>
-      <div>Notes: {item.note}</div>
-      <div>Resource: {item.resource}</div>
-      <button
-        onClick={() => {
-          navigate(`/notes/${item.id}/edit`);
-        }}
-      >
-        Edit Item
-      </button>
-      <button
-        onClick={() => {
-          navigate(`/portfolio`);
-        }}
-      >
-        Return to Favorites
-      </button>
+    <div className="wholeEntry">
+      <div className="customNoteCard">
+        <div className="">
+          <div className="noteDivItem">
+            <u>Cryptocurrency:</u> <b>{item.name}</b>
+          </div>
+        </div>
+        <div className="noteDivItem">
+          <u>Notes:</u> {item.note}
+        </div>
+
+        <div className="noteDivItem">
+          <u>Resource:</u> {item.resource}
+        </div>
+      </div>
+      <div className="buttonAlign">
+        <button
+          onClick={() => {
+            navigate(`/notes/${item.id}/edit`);
+          }}
+        >
+          Edit Item
+        </button>
+        <button
+          onClick={() => {
+            navigate(`/portfolio`);
+          }}
+        >
+          Return to Favorites
+        </button>
+      </div>
     </div>
   );
 };
