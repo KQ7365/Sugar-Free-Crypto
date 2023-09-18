@@ -4,6 +4,7 @@ import { NotesPost } from "../../services/NotesPost";
 import "./MyPortfolio.css";
 import { favoriteResourceService } from "../../services/favoriteService";
 import { useNavigate } from "react-router-dom";
+import { TwitterShareButton } from "react-share";
 
 export const MyPortfolio = ({ currentUser }) => {
   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
@@ -101,17 +102,19 @@ export const MyPortfolio = ({ currentUser }) => {
       </div>
 
       <div className="wholeEntry">
-        <form>
+        <form className="createNoteBorder">
           <fieldset>
-            <div className="favoriteCard">
-              <h2>Create a Crypto Reference Item</h2>
+            <div className="favoriteCardChange">
+              <h2>Create a Cryptocurrency Note</h2>
             </div>
             <select
               onChange={handleInputChange}
               name="cryptoName"
               value={newCryptoObject.cryptoName}
             >
-              <option value="0">Choose one of your crypto favorites</option>
+              <option value="0">
+                Select one of your favorite cryptocurrencies
+              </option>
               {favoriteCryptoList.map((favObj) => {
                 return (
                   <option key={favObj.id} value={favObj.cryptoName}>
@@ -153,30 +156,49 @@ export const MyPortfolio = ({ currentUser }) => {
         </form>
       </div>
       <div className="favoriteCardParentDiv">
-        <div className="favoriteCard">
-          <h2>Crypto Notes</h2>
+        <div className="favoriteCardNotes">
+          <h2>Cryptocurrency Notes</h2>
         </div>
       </div>
       <div className="wholeEntry">
         {cryptoNotesItem.map((noteObj) => {
           return (
-            <div className="favoriteCard" key={noteObj.id} value={noteObj.id}>
-              Crypto: {noteObj.name}
-              Notes: {noteObj.note}
-              Resource Url: {noteObj.resource}
-              <div>
-                <button onClick={() => handleDeleteItemClick(noteObj.id)}>
-                  Delete Item
-                </button>
+            <div className="customNoteCard" key={noteObj.id} value={noteObj.id}>
+              <div className="noteDivItem">
+                <u>Cryptocurrency:</u> {noteObj.name}
               </div>
-              <div>
-                <button
-                  onClick={() => {
-                    navigate(`/notes/${noteObj.id}`);
-                  }}
+              <div className="noteDivItem">
+                <u>Notes:</u> {noteObj.note}
+              </div>
+              <div className="noteDivItem">
+                <u>Resource Url:</u> {noteObj.resource}
+              </div>
+              <div className="buttonAlign">
+                <div>
+                  <button
+                    onClick={() => {
+                      navigate(`/notes/${noteObj.id}`);
+                    }}
+                  >
+                    View Details
+                  </button>
+                </div>
+                <TwitterShareButton
+                  url={
+                    "www.sugarfreecrypto.com/favorites/BitcoinNote" +
+                    " I think I found the next cryptocurrency going to the moon! Go check out my page. I have all the notes you need about it!🚀🌛 #NSS #C66 #Val #Dave #Derek #ThankYouForWatching"
+                  }
                 >
-                  View Details
-                </button>
+                  <button className="twitterButton">Add Some Sugar</button>
+                </TwitterShareButton>
+                <div>
+                  <button
+                    className="deleteButton"
+                    onClick={() => handleDeleteItemClick(noteObj.id)}
+                  >
+                    Delete Item
+                  </button>
+                </div>
               </div>
             </div>
           );

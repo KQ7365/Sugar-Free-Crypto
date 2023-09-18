@@ -6,19 +6,57 @@
 
 .favoriteCard {
   border: 4px solid white;
-  padding: 16px 8px 8px 8px;
+  padding: 5px 8px 8px 8px;
   border-radius: 12px;
   color: white;
   font-size: 2rem;
   font-family: "Outfit", sans-serif;
 }
+.favoriteCardNotes {
+  margin-bottom: -100px;
+  color: white;
+  font-size: 2rem;
+  font-family: "Outfit", sans-serif;
+}
+
+.favoriteCardChange {
+  display: flex;
+  justify-content: center;
+  margin-left: 18.8%;
+
+  width: 60%;
+  padding: 10px 8px 8px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 2rem;
+  font-family: "Outfit", sans-serif;
+  margin-bottom: 25px;
+}
 
 .wholeEntry {
   text-align: center;
-  border: 5px solid orange;
   padding: 2rem;
   margin: 3rem 6rem 3rem 6rem;
-  border-radius: 150px;
+}
+
+.customNoteCard {
+  border: 1px solid white;
+  padding: 8px 8px 8px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 2rem;
+  font-family: "Outfit", sans-serif;
+  margin-bottom: 20px;
+}
+
+.createNoteBorder {
+  border: 4px solid orange;
+  border-radius: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.noteDivItem {
 }
 
 .entryForm {
@@ -82,4 +120,17 @@ input:focus,
 textarea:focus,
 select:focus {
   color: white;
+}
+
+.twitterButton {
+  background-color: blue;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.buttonAlign {
+  display: flex;
+  justify-content: space-evenly;
 }
