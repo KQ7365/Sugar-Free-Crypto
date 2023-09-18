@@ -5,9 +5,11 @@ import "./MyPortfolio.css";
 import { favoriteResourceService } from "../../services/favoriteService";
 import { useNavigate } from "react-router-dom";
 import { TwitterShareButton } from "react-share";
+import { favoriteResourceLinkFetch } from "../../services/ResourcePost";
 
 export const MyPortfolio = ({ currentUser }) => {
   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
+  const [favoriteLink, setFavoriteLink] = useState([]);
   const [cryptoNotesItem, setCryptoNotesItem] = useState([]);
   const [newCryptoObject, setNewCryptoObject] = useState({
     cryptoName: "",
@@ -23,6 +25,13 @@ export const MyPortfolio = ({ currentUser }) => {
         (fav) => fav.userId.currentUser.id === currentUser.id
       );
       setFavoriteCryptoList(filteredFavorites);
+    });
+
+    favoriteResourceLinkFetch().then((favoriteLink) => {
+      const filteredLinkFavorite = favoriteLink.filter(
+        (fav) => fav.userId.currentUser.id === currentUser.id
+      );
+      setFavoriteLink(filteredLinkFavorite);
     });
   }, [currentUser]);
 
@@ -90,6 +99,13 @@ export const MyPortfolio = ({ currentUser }) => {
           <h1>
             <u>Favorite Links</u>
           </h1>
+          {favoriteLink.map((linkObj) => {
+            return (
+              <div key={linkObj.id} value={linkObj.id}>
+                Link: {linkObj.newLink}
+              </div>
+            );
+          })}
         </div>
         <div className="favoriteCard">
           <h1>

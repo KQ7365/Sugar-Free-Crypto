@@ -7,3 +7,7 @@ export const ResourcesPost = (post) => {
     body: JSON.stringify(post),
   });
 };
+
+export const favoriteResourceLinkFetch = () => {
+  return fetch("http://localhost:8089/urlFavorites").then((res) => res.json());
+};
