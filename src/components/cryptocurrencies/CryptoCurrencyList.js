@@ -28,12 +28,12 @@ export const CryptoCurrencyList = ({ currentUser }) => {
         });
     };
 
-    fetchData(); // Fetch data initially
+    fetchData();
 
-    const interval = setInterval(fetchData, 60000); // Fetch data every 60 seconds
+    const interval = setInterval(fetchData, 60000);
 
     return () => {
-      clearInterval(interval); // Clean up the interval when the component unmounts
+      clearInterval(interval);
     };
   }, []);
 
