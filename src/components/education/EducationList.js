@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Education.css";
 import { getResources } from "../../services/getResources";
+import { ResourcesPost } from "../../services/ResourcePost";
 
 export const EducationList = ({ currentUser }) => {
   const [allResources, setAllResources] = useState([]);
@@ -10,6 +11,14 @@ export const EducationList = ({ currentUser }) => {
       setAllResources(resourceObj);
     });
   }, []);
+
+  const handleAddToFavoritesUrl = (link) => {
+    const newLinkFavoriteObject = {
+      newLink: link,
+      userId: { currentUser },
+    };
+    ResourcesPost(newLinkFavoriteObject);
+  };
 
   return (
     <div>
@@ -43,7 +52,12 @@ export const EducationList = ({ currentUser }) => {
                     {linkObj.urlLink}
                   </a>
                 </div>
-                <button className="linkButton">Add Link to Favorites</button>
+                <button
+                  className="linkButton"
+                  onClick={() => handleAddToFavoritesUrl(linkObj.urlLink)}
+                >
+                  Add Link to Favorites
+                </button>
               </div>
             </div>
           );
