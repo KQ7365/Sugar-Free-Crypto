@@ -79,7 +79,6 @@ export const MyPortfolio = ({ currentUser }) => {
     })
       .then((response) => {
         if (response.ok) {
-          // Item successfully deleted, update the cryptoNotesItem array
           setCryptoNotesItem((prevNotes) =>
             prevNotes.filter((note) => note.id !== id)
           );
@@ -122,7 +121,7 @@ export const MyPortfolio = ({ currentUser }) => {
       </div>
 
       <div className="wholeEntry">
-        <form className="createNoteBorder">
+        <form className="createNoteBorder" autocomplete="off">
           <fieldset>
             <div className="favoriteCardChange">
               <h2>

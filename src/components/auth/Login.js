@@ -36,7 +36,7 @@ export const Login = () => {
           <h1>Sugar Free Crypto</h1>
           <h2>Please sign in</h2>
         </div>
-        <form className="form-login" onSubmit={handleLogin}>
+        <form autocomplete="off" className="form-login" onSubmit={handleLogin}>
           <fieldset>
             <div className="form-group">
               <input
