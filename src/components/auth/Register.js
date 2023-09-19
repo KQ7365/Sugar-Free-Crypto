@@ -56,7 +56,11 @@ export const Register = (props) => {
           <h1>Sugar Free Crypto</h1>
           <h2>Please Register</h2>
         </div>
-        <form className="form-login" onSubmit={handleRegister}>
+        <form
+          className="form-login"
+          autocomplete="off"
+          onSubmit={handleRegister}
+        >
           <fieldset>
             <div className="form-group">
               <input
