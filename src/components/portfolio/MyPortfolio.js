@@ -37,23 +37,31 @@ export const MyPortfolio = ({ currentUser }) => {
     });
   }, []);
   const filterFavorites = () => {
+    // handles matching favorite cryp to id from API
     const filteredFavorites = apiFavorites.filter((fav) =>
-      favoriteCryptoList.some((favCrypto) => favCrypto.apiId === fav.id)
+      favoriteCryptoList.some(
+        (favCrypto) =>
+          favCrypto.apiId === fav.id && favCrypto.userId === currentUser.id
+      )
     );
     return filteredFavorites;
   };
 
   useEffect(() => {
+    //*handles displaying favorite links
     favoriteResourceLinkFetch().then((favoriteLink) => {
-      setFavoriteLink(favoriteLink);
+      const filteredFavoriteLink = favoriteLink.filter(
+        (link) => link.userId === currentUser.id
+      );
+      setFavoriteLink(filteredFavoriteLink);
     });
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     favoriteResourceService().then((cryptoNotes) => {
       setCryptoNotesItem(cryptoNotes);
     });
-  }, [newCryptoObject]);
+  }, [newCryptoObject]); //THIS IS GETTING NOTES
 
   const handleInputChange = (e) => {
     const itemCopy = { ...newCryptoObject };
