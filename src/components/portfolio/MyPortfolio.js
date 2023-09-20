@@ -7,42 +7,40 @@ import { useNavigate } from "react-router-dom";
 import { TwitterShareButton } from "react-share";
 import { favoriteResourceLinkFetch } from "../../services/ResourcePost";
 
-export const MyPortfolio = ({ currentUser }) => {
+export const MyPortfolio = () => {
   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
   const [favoriteLink, setFavoriteLink] = useState([]);
   const [cryptoNotesItem, setCryptoNotesItem] = useState([]);
   const [newCryptoObject, setNewCryptoObject] = useState({
-    cryptoName: "",
     note: "",
     resourceUrl: "",
+    cryptoName: "",
+    favoriteId: 0,
   });
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    CryptoFavoriteList().then((favorites) => {
-      const filteredFavorites = favorites.filter(
-        (fav) => fav.userId.currentUser.id === currentUser.id
-      );
-      setFavoriteCryptoList(filteredFavorites);
-    });
+    CryptoFavoriteList()
+      .then((favorites) => {
+        setFavoriteCryptoList(favorites);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
+  useEffect(() => {
     favoriteResourceLinkFetch().then((favoriteLink) => {
-      const filteredLinkFavorite = favoriteLink.filter(
-        (fav) => fav.userId.currentUser.id === currentUser.id
-      );
-      setFavoriteLink(filteredLinkFavorite);
+      setFavoriteLink(favoriteLink);
     });
-  }, [currentUser]);
+  }, []);
 
   useEffect(() => {
     favoriteResourceService().then((cryptoNotes) => {
-      const filteredNotes = cryptoNotes.filter(
-        (note) => note.currentUser.currentUser.id === currentUser.id
-      );
-      setCryptoNotesItem(filteredNotes);
+      setCryptoNotesItem(cryptoNotes);
     });
-  }, [newCryptoObject, currentUser]);
+  }, [newCryptoObject]);
 
   const handleInputChange = (e) => {
     const itemCopy = { ...newCryptoObject };
@@ -54,24 +52,24 @@ export const MyPortfolio = ({ currentUser }) => {
     e.preventDefault();
 
     const newNotesItem = {
-      name: newCryptoObject.cryptoName,
       note: newCryptoObject.note,
-      resource: newCryptoObject.resourceUrl,
-      currentUser: { currentUser },
+      resourceUrl: newCryptoObject.resourceUrl,
+      cryptoName: newCryptoObject.cryptoName,
+      favoriteId: parseInt(newCryptoObject.favoriteId),
     };
 
     NotesPost(newNotesItem).then(() => {
       setNewCryptoObject({
-        cryptoName: "",
         note: "",
         resourceUrl: "",
-        currentUser: { currentUser },
+        cryptoName: "",
+        favoriteId: 0,
       });
     });
   };
 
   const handleDeleteItemClick = (id) => {
-    fetch(`http://localhost:8089/notes/${id}`, {
+    fetch(`http://localhost:8088/notes/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -98,12 +96,9 @@ export const MyPortfolio = ({ currentUser }) => {
           <h1>
             <u>Favorite Links</u>
           </h1>
+
           {favoriteLink.map((linkObj) => {
-            return (
-              <div key={linkObj.id} value={linkObj.id}>
-                Link: {linkObj.newLink}
-              </div>
-            );
+            return <div key={linkObj.id}>Link: {linkObj.resource.urlLink}</div>;
           })}
         </div>
         <div className="favoriteCard">
@@ -121,7 +116,7 @@ export const MyPortfolio = ({ currentUser }) => {
       </div>
 
       <div className="wholeEntry">
-        <form className="createNoteBorder" autocomplete="off">
+        <form className="createNoteBorder" autoComplete="off">
           <fieldset>
             <div className="favoriteCardChange">
               <h2>
@@ -190,13 +185,13 @@ export const MyPortfolio = ({ currentUser }) => {
           return (
             <div className="customNoteCard" key={noteObj.id} value={noteObj.id}>
               <div className="noteDivItem">
-                <u>Cryptocurrency:</u> {noteObj.name}
+                <u>Cryptocurrency:</u> {noteObj.cryptoName}
               </div>
               <div className="noteDivItem">
                 <u>Notes:</u> {noteObj.note}
               </div>
               <div className="noteDivItem">
-                <u>Resource Url:</u> {noteObj.resource}
+                <u>Resource Url:</u> {noteObj.resourceUrl}
               </div>
               <div className="buttonAlign">
                 <div>

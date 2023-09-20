@@ -14,8 +14,8 @@ export const EducationList = ({ currentUser }) => {
 
   const handleAddToFavoritesUrl = (link) => {
     const newLinkFavoriteObject = {
-      newLink: link,
-      userId: { currentUser },
+      resourceId: link.id,
+      userId: currentUser.id,
     };
     ResourcesPost(newLinkFavoriteObject);
   };
@@ -54,7 +54,7 @@ export const EducationList = ({ currentUser }) => {
                 </div>
                 <button
                   className="linkButton"
-                  onClick={() => handleAddToFavoritesUrl(linkObj.urlLink)}
+                  onClick={() => handleAddToFavoritesUrl(linkObj)}
                 >
                   Add Link to Favorites
                 </button>

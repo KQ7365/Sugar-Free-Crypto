@@ -1,5 +1,5 @@
 export const ResourcesPost = (post) => {
-  return fetch("http://localhost:8089/urlFavorites", {
+  return fetch("http://localhost:8088/educationFavorites", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -9,5 +9,7 @@ export const ResourcesPost = (post) => {
 };
 
 export const favoriteResourceLinkFetch = () => {
-  return fetch("http://localhost:8089/urlFavorites").then((res) => res.json());
+  return fetch(
+    `http://localhost:8088/educationFavorites/?_expand=resource`
+  ).then((res) => res.json());
 };

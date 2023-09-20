@@ -18,8 +18,8 @@ export const NoteDetails = () => {
     <div className="wholeEntry">
       <div className="customNoteCard">
         <div className="">
-          <div className="noteDivItem">
-            <u>Cryptocurrency:</u> <b>{item.name}</b>
+          <div className="noteDivItem" key={item.id}>
+            <u>Cryptocurrency:</u> <b>{item.cryptoName}</b>
           </div>
         </div>
         <div className="noteDivItem">
@@ -27,7 +27,7 @@ export const NoteDetails = () => {
         </div>
 
         <div className="noteDivItem">
-          <u>Resource:</u> {item.resource}
+          <u>Resource:</u> {item.resourceUrl}
         </div>
       </div>
       <div className="buttonAlign">
