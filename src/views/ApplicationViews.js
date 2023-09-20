@@ -39,6 +39,7 @@ export const ApplicationViews = () => {
           path="/cryptocurrencies"
           element={<CryptoCurrencyList currentUser={currentUser} />}
         />
+
         <Route
           path="/portfolio"
           index
@@ -46,10 +47,7 @@ export const ApplicationViews = () => {
         />
         <Route path="notes">
           <Route path=":notesId" element={<NoteDetails />} />
-          <Route
-            path=":notesId/edit"
-            element={<EditNote currentUser={currentUser} />}
-          />
+          <Route path=":notesId/edit" element={<EditNote />} />
         </Route>
       </Route>
 

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getItemById } from "../../services/getItemById";
 import { editNote } from "../../services/editNote";
 
-export const EditNote = ({ currentUser }) => {
+export const EditNote = () => {
   const [item, setItem] = useState({});
   const { notesId } = useParams();
 
@@ -19,10 +19,10 @@ export const EditNote = ({ currentUser }) => {
     e.preventDefault();
 
     const updatedNote = {
-      name: item.name,
       note: item.note,
-      resource: item.resource,
-      currentUser: { currentUser },
+      resourceUrl: item.resourceUrl,
+      cryptoName: item.cryptoName,
+      favoriteId: item.favoriteId,
       id: item.id,
     };
     editNote(updatedNote).then(() => {
@@ -33,14 +33,14 @@ export const EditNote = ({ currentUser }) => {
   return (
     <div className="wholeEntry">
       <h1 className="editTitle">
-        <u>Cryptocurrency:</u> <b>{item.name}</b>
+        <u>Cryptocurrency:</u> <b>{item.cryptoName ? item.cryptoName : " "}</b>
       </h1>
 
       <fieldset>
         <label>Enter Notes</label>
         <textarea
           name="note"
-          value={item.note}
+          value={item.note ? item.note : ""}
           rows={6}
           required
           type="text"
@@ -57,7 +57,7 @@ export const EditNote = ({ currentUser }) => {
       <fieldset>
         <label>Enter Resource Url</label>
         <input
-          value={item.resource}
+          value={item.resourceUrl ? item.resourceUrl : ""}
           name="resource"
           required
           type="text"
@@ -65,7 +65,7 @@ export const EditNote = ({ currentUser }) => {
           placeholder="https://www.example.com"
           onChange={(e) => {
             const itemCopy = { ...item };
-            itemCopy.resource = e.target.value;
+            itemCopy.resourceUrl = e.target.value;
             setItem(itemCopy);
           }}
         ></input>
