@@ -46,8 +46,14 @@ export const ApplicationViews = () => {
           element={<MyPortfolio currentUser={currentUser} />}
         />
         <Route path="notes">
-          <Route path=":notesId" element={<NoteDetails />} />
-          <Route path=":notesId/edit" element={<EditNote />} />
+          <Route
+            path=":notesId"
+            element={<NoteDetails currentUser={currentUser} />}
+          />
+          <Route
+            path=":notesId/edit"
+            element={<EditNote currentUser={currentUser} />}
+          />
         </Route>
       </Route>
 

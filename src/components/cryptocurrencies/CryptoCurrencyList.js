@@ -12,17 +12,23 @@ export const CryptoCurrencyList = ({ currentUser }) => {
       )
         .then((res) => res.json())
         .then((data) => {
-          const modifiedData = Object.entries(data).map(([key, value]) => {
-            const price = value.usd.toFixed(2);
-            const formattedPrice = parseFloat(price).toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-            });
+          const modifiedData = Object.entries(data).map(
+            ([key, value], index) => {
+              const price = value.usd.toFixed(2);
+              const formattedPrice = parseFloat(price).toLocaleString(
+                undefined,
+                {
+                  minimumFractionDigits: 2,
+                }
+              );
 
-            return {
-              name: key.charAt(0).toUpperCase() + key.slice(1),
-              price: formattedPrice,
-            };
-          });
+              return {
+                id: index + 1,
+                name: key.charAt(0).toUpperCase() + key.slice(1),
+                price: formattedPrice,
+              };
+            }
+          );
 
           setCryptocurrencies(modifiedData);
         });
@@ -37,11 +43,10 @@ export const CryptoCurrencyList = ({ currentUser }) => {
     };
   }, []);
 
-  const handleAddToFavoritesButton = (name, price) => {
+  const handleAddToFavoritesButton = (api) => {
     const newCryptoFavorite = {
-      cryptoName: name,
-      price: price,
-      userId: { currentUser },
+      apiId: api.id,
+      userId: currentUser.id,
     };
     cryptoCurrencyPost(newCryptoFavorite);
   };
@@ -59,13 +64,7 @@ export const CryptoCurrencyList = ({ currentUser }) => {
             <p className="eachPrice"> Price: ${crypto.price}</p>
             <button
               className="login-btn btn-info"
-              onClick={() =>
-                handleAddToFavoritesButton(
-                  crypto.name,
-                  crypto.price,
-                  crypto.userId
-                )
-              }
+              onClick={() => handleAddToFavoritesButton(crypto)}
             >
               Add to Favorites
             </button>
