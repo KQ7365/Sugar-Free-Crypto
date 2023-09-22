@@ -64,7 +64,10 @@ export const CryptoCurrencyList = ({ currentUser }) => {
             <p className="eachPrice"> Price: ${crypto.price}</p>
             <button
               className="login-btn btn-info"
-              onClick={() => handleAddToFavoritesButton(crypto)}
+              onClick={() => {
+                handleAddToFavoritesButton(crypto);
+                alert("🚀NEW CRYPTO ADDED🚀");
+              }}
             >
               Add to Favorites
             </button>

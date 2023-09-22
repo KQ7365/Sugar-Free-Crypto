@@ -5,6 +5,25 @@ import { ResourcesPost } from "../../services/ResourcePost";
 
 export const EducationList = ({ currentUser }) => {
   const [allResources, setAllResources] = useState([]);
+  const [message, setMessage] = useState("");
+
+  const Notification = ({ message }) => {
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+      if (message) {
+        setVisible(true);
+
+        setTimeout(() => {
+          setVisible(false);
+        }, 4000); // Hide after 3 seconds (adjust the timeout as needed)
+      }
+    }, [message]);
+
+    return visible ? (
+      <div className="custom-notification">{message}</div>
+    ) : null;
+  };
 
   useEffect(() => {
     getResources().then((resourceObj) => {
@@ -17,6 +36,7 @@ export const EducationList = ({ currentUser }) => {
       resourceId: link.id,
       userId: currentUser.id,
     };
+    setMessage("Favorite Link Added");
     ResourcesPost(newLinkFavoriteObject);
   };
 
@@ -58,6 +78,7 @@ export const EducationList = ({ currentUser }) => {
                 >
                   Add Link to Favorites
                 </button>
+                <Notification message={message} />
               </div>
             </div>
           );

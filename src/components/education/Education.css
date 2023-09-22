@@ -44,3 +44,15 @@
   margin-left: 10rem;
   margin-top: 2rem;
 }
+.custom-notification {
+  position: fixed;
+  top: 50%; /* Vertically center the notification */
+  left: 50%; /* Horizontally center the notification */
+  transform: translate(-50%, -50%); /* Center the notification precisely */
+  padding: 10px 20px;
+  background-color: green; /* Customize the background color */
+  color: white; /* Customize the text color */
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}

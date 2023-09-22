@@ -30,13 +30,13 @@ export const Login = () => {
 
   return (
     <div className="backgroundLogin">
-      <img alt="cyberpunk" src="light-blue copy.png" class="loginIMG" />
+      <img alt="cyberpunk" src="light-blue copy.png" className="loginIMG" />
       <div className="container-login">
         <div className="headerText">
           <h1>Sugar Free Crypto</h1>
           <h2>Please sign in</h2>
         </div>
-        <form autocomplete="off" className="form-login" onSubmit={handleLogin}>
+        <form autoComplete="off" className="form-login" onSubmit={handleLogin}>
           <fieldset>
             <div className="form-group">
               <input

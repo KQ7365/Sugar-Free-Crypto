@@ -45,20 +45,20 @@ export const Register = (props) => {
   };
 
   return (
-    <div class="backgroundLogin">
+    <div className="backgroundLogin">
       <img
         src="cyberpunk-looking-down.png"
         alt="registerIMG"
-        class="loginIMG"
+        className="loginIMG"
       />
-      <div class="container-login">
+      <div className="container-login">
         <div className="headerText">
           <h1>Sugar Free Crypto</h1>
           <h2>Please Register</h2>
         </div>
         <form
           className="form-login"
-          autocomplete="off"
+          autoComplete="off"
           onSubmit={handleRegister}
         >
           <fieldset>
@@ -71,12 +71,14 @@ export const Register = (props) => {
                 placeholder="Enter your name"
                 required
                 autoFocus
+                autoComplete="off"
               />
             </div>
           </fieldset>
           <fieldset>
             <div className="form-group">
               <input
+                autoComplete="off"
                 onChange={updateCustomer}
                 type="email"
                 id="email"

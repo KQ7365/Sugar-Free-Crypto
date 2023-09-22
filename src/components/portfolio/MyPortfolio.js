@@ -9,8 +9,10 @@ import { favoriteResourceService } from "../../services/favoriteService";
 import { useNavigate } from "react-router-dom";
 import { TwitterShareButton } from "react-share";
 import { favoriteResourceLinkFetch } from "../../services/ResourcePost";
+import { fetchUserData } from "../../services/NotesEmbed";
 
 export const MyPortfolio = ({ currentUser }) => {
+  const [item, setItem] = useState([]);
   const [favoriteLink, setFavoriteLink] = useState([]);
   const [cryptoNotesItem, setCryptoNotesItem] = useState([]);
   const [newCryptoObject, setNewCryptoObject] = useState({
@@ -19,23 +21,36 @@ export const MyPortfolio = ({ currentUser }) => {
     cryptoName: "",
     favoriteId: 0,
   });
-
+  console.log(item);
   const navigate = useNavigate();
 
   const [apiFavorites, setApiFavorites] = useState([]);
   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
 
   useEffect(() => {
+    if (currentUser && currentUser.id) {
+      fetchUserData(currentUser.id)
+        .then((itemObj) => {
+          console.log("API Response:", itemObj);
+          setItem(itemObj);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
     cryptoApiListForFavorites().then((apiFavObj) => {
       setApiFavorites(apiFavObj);
     });
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     CryptoFavoriteList().then((favObj) => {
       setFavoriteCryptoList(favObj);
     });
-  }, []);
+  }, [currentUser]);
   const filterFavorites = () => {
     // handles matching favorite cryp to id from API
     const filteredFavorites = apiFavorites.filter((fav) =>
@@ -91,8 +106,8 @@ export const MyPortfolio = ({ currentUser }) => {
       });
     });
   };
-
   const handleDeleteItemClick = (id) => {
+    console.log("Deleting note with id:", id);
     fetch(`http://localhost:8088/notes/${id}`, {
       method: "DELETE",
       headers: {
@@ -101,9 +116,13 @@ export const MyPortfolio = ({ currentUser }) => {
     })
       .then((response) => {
         if (response.ok) {
-          setCryptoNotesItem((prevNotes) =>
-            prevNotes.filter((note) => note.id !== id)
+          // Create a new array without the deleted note
+          const updatedCryptoNotes = cryptoNotesItem.filter(
+            (note) => note.id !== id
           );
+
+          // Update the state with the new array
+          setCryptoNotesItem(updatedCryptoNotes);
         } else {
           throw new Error("Failed to delete item");
         }
@@ -113,6 +132,17 @@ export const MyPortfolio = ({ currentUser }) => {
       });
   };
 
+  const userCryptoNotes = cryptoNotesItem.filter((note) => {
+    // Find the associated item for this note
+    const associatedItem = item.find(
+      (itemObj) =>
+        itemObj.apiId === note.favoriteId && itemObj.userId === currentUser.id
+    );
+
+    // Check if the associatedItem exists
+    return associatedItem !== undefined;
+  });
+  console.log("User Crypto Notes:", userCryptoNotes);
   return (
     <div>
       <div className="favoriteCardParentDiv">
@@ -158,7 +188,6 @@ export const MyPortfolio = ({ currentUser }) => {
               ))}
             </select>
           </fieldset>
-
           <fieldset>
             <label htmlFor="note">Enter Notes</label>
             <textarea
@@ -199,7 +228,7 @@ export const MyPortfolio = ({ currentUser }) => {
       </div>
 
       <div className="wholeEntry">
-        {cryptoNotesItem.map((noteObj) => {
+        {userCryptoNotes.map((noteObj) => {
           return (
             <div className="customNoteCard" key={noteObj.id} value={noteObj.id}>
               <div className="noteDivItem">
@@ -226,7 +255,7 @@ export const MyPortfolio = ({ currentUser }) => {
                     className="twitterShareButton"
                     url={
                       "www.sugarfreecrypto.com/favorites/BitcoinNote" +
-                      " I think I found the next cryptocurrency going to the moon! Go check out my page. I have all the notes you need about it!🚀🌛 #NSS #C66 #Val #Dave #Derek #ThankYouForWatching"
+                      " I think I found the next cryptocurrency going to the moon! Go check out my page. I have all the notes you need about it!🚀🌛 #NSS #C66 #Val #HellowDivs #ThankYouForWatching"
                     }
                   >
                     Add Some Sugar
@@ -258,11 +287,14 @@ export const MyPortfolio = ({ currentUser }) => {
 // import { NotesPost } from "../../services/NotesPost";
 // import "./MyPortfolio.css";
 // import { favoriteResourceService } from "../../services/favoriteService";
-// import { useNavigate } from "react-router-dom";
+// import { useNavigate, useParams } from "react-router-dom";
 // import { TwitterShareButton } from "react-share";
 // import { favoriteResourceLinkFetch } from "../../services/ResourcePost";
+// import { fetchData } from "../../services/NotesEmbed";
 
 // export const MyPortfolio = ({ currentUser }) => {
+//   const { itemId } = useParams();
+//   const [item, setItem] = useState({});
 //   const [favoriteLink, setFavoriteLink] = useState([]);
 //   const [cryptoNotesItem, setCryptoNotesItem] = useState([]);
 //   const [newCryptoObject, setNewCryptoObject] = useState({
@@ -278,6 +310,12 @@ export const MyPortfolio = ({ currentUser }) => {
 //   const [favoriteCryptoList, setFavoriteCryptoList] = useState([]);
 
 //   useEffect(() => {
+//     fetchData(itemId).then((itemObj) => {
+//       setItem(itemObj);
+//     });
+//   }, []); //our embed fetch
+
+//   useEffect(() => {
 //     cryptoApiListForFavorites().then((apiFavObj) => {
 //       setApiFavorites(apiFavObj);
 //     });
@@ -289,23 +327,31 @@ export const MyPortfolio = ({ currentUser }) => {
 //     });
 //   }, []);
 //   const filterFavorites = () => {
+//     // handles matching favorite cryp to id from API
 //     const filteredFavorites = apiFavorites.filter((fav) =>
-//       favoriteCryptoList.some((favCrypto) => favCrypto.apiId === fav.id)
+//       favoriteCryptoList.some(
+//         (favCrypto) =>
+//           favCrypto.apiId === fav.id && favCrypto.userId === currentUser.id
+//       )
 //     );
 //     return filteredFavorites;
 //   };
 
 //   useEffect(() => {
+//     //*handles displaying favorite links
 //     favoriteResourceLinkFetch().then((favoriteLink) => {
-//       setFavoriteLink(favoriteLink);
+//       const filteredFavoriteLink = favoriteLink.filter(
+//         (link) => link.userId === currentUser.id
+//       );
+//       setFavoriteLink(filteredFavoriteLink);
 //     });
-//   }, []);
+//   }, [currentUser]);
 
 //   useEffect(() => {
 //     favoriteResourceService().then((cryptoNotes) => {
 //       setCryptoNotesItem(cryptoNotes);
 //     });
-//   }, [newCryptoObject]);
+//   }, [newCryptoObject]); //THIS IS GETTING NOTES
 
 //   const handleInputChange = (e) => {
 //     const itemCopy = { ...newCryptoObject };

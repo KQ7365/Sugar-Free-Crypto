@@ -42,7 +42,6 @@ export const ApplicationViews = () => {
 
         <Route
           path="/portfolio"
-          index
           element={<MyPortfolio currentUser={currentUser} />}
         />
         <Route path="notes">
