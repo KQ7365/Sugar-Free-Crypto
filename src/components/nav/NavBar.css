@@ -13,6 +13,11 @@
   border: solid 8px white;
   border-radius: 10px;
   padding: 1.5em;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
 }
 
 .navbarOuter {
