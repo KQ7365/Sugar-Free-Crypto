@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Sugar Free Crypto - A risk free cryptocurrency experience
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the README for my application. Below is the basic constructs of my client side capstone project while at Nashville Software School.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Bitcoin was created by the presumed pseudonymous name Satoshi Nakamto in 2009. Since then, Cryptocurrency has witnessed adoption rates as fast as when the internet was first introduced in the 1990s. Currently, venturing into Cryptocurrencies for the first time can be daunting and provide a user an overwhelming experience. Many web pages overload a new user, from needing to provide personal information, as well as bank information. However, Sugar Free Crypto solves this by taking out all the bad stuff and providing a user with a sugar free, healthy experience. Sugar Free Crypto only asks users for an email so each individual has a personalized experience. Additionally, all cryptocurrency interactions are simulated so there is no need for Know Your Customer (KYC), but still providing the user with live price updates each minute!
 
-### `npm start`
+### Wireframe and ERD
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Wireframe: https://miro.com/app/board/uXjVMnF_kic=/?moveToWidget=3458764563464158353&cot=14
+ERD: https://dbdiagram.io/d/Sugar-Free-Crypto-64fa269302bd1c4a5e2bbd09
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Description of the user type
 
-### `npm test`
+The user of this application is an individual who is beginning to venture into cryptocurrency. All interactions are simulated, however, the user is presented with real time price data. The user is provided education articles, cryptocurrency prices, and a favorites page where they can create and customize notes. Additionally, the user can make a post on their X account with the click of a button.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### List of features
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- User specific views based on validation
+- CRUD capabilities
+- Public API provided by CoinGecko
+- Over 40 modules adhering to clean code practices and modularization
