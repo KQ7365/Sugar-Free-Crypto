@@ -1,6 +1,15 @@
 # Sugar Free Crypto - A risk free cryptocurrency experience
 
-Welcome to the README for my application. Below is the basic constructs of my client side capstone project while at Nashville Software School.
+Welcome to the README for my application. Below is the basic constructs of my client side capstone project while at Nashville Software School!
+
+# Instructions to deploy app
+
+- Be sure to open the Sugar-Free-Crypto-Database repository (also pinned on profile) and read instructions. Recommend deploying JSON database before deploying React app
+
+1. clone this repository into your Workspace directory
+2. cd into the repository Sugar-Free-Crypto
+3. npm install
+4. npm start (If application does not start properly, ensure you have cloned and are actively running the JSON database. See instructions on line 7 of this ReadMe)
 
 ## Description
 
@@ -21,3 +30,9 @@ The user of this application is an individual who is beginning to venture into c
 - CRUD capabilities
 - Public API provided by CoinGecko
 - Over 40 modules adhering to clean code practices and modularization
+
+##### User Awareness
+
+Some items are simulated, for example, the 'add some sugar' button within the Favorites Page after creating a resource will automatically make a draft post on the social media application 'X'. However, if user testing application does not have X, the action may not work properly.
+
+User functionality to delete favorite education links and favorite cryptos has not been added as of yet (stretch goal)

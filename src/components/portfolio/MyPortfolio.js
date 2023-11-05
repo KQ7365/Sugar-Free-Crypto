@@ -254,8 +254,8 @@ export const MyPortfolio = ({ currentUser }) => {
                   <TwitterShareButton
                     className="twitterShareButton"
                     url={
-                      "www.sugarfreecrypto.com/favorites/BitcoinNote" +
-                      " I think Bitcoin is about to go to the moon! Go check out my page. I have all the notes you need about it!🚀🌛 #NSS #C66 #BestOfLuckC67 #ThankYouForWatching"
+                      "www.sugarfreecrypto.com/favorites/note" +
+                      " I think this crypto note of mine is something you should all read! Go check out my page!!🚀🌛 #ThankYouForUsingMyApplication"
                     }
                   >
                     Add Some Sugar
