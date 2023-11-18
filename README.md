@@ -4,12 +4,16 @@ Welcome to the README for my application. Below is the basic constructs of my cl
 
 # Instructions to deploy app
 
+(1)UPDATE as of 18NOV(The free/public API normally used no longer allows unlimited fetch calls. As of now, all fetch calls are currently under the local JSON database. All instructions to deploy application remain the same).
+(2)UPDATE as of 18NOV: User may now remove favorite links and favorite cryptos within the Favorites page to allow further functionality.
+
 - Be sure to open the Sugar-Free-Crypto-Database repository (also pinned on profile) and read instructions. Recommend deploying JSON database before deploying React app
 
 1. clone this repository into your Workspace directory
 2. cd into the repository Sugar-Free-Crypto
 3. npm install
-4. npm start (If application does not start properly, ensure you have cloned and are actively running the JSON database. See instructions on line 7 of this ReadMe)
+4. npm start (If application does not start properly, ensure you have cloned and are actively running the JSON database. See instructions on line 10 of this ReadMe)
+5. Register as a new user at http://localhost:3000/register and enjoy navigating my application!
 
 ## Description
 
@@ -28,7 +32,7 @@ The user of this application is an individual who is beginning to venture into c
 
 - User specific views based on validation
 - CRUD capabilities
-- Public API provided by CoinGecko
+- Public API provided by CoinGecko (Currently unavailable due to API host restrictions)
 - Over 40 modules adhering to clean code practices and modularization
 
 ##### User Awareness
