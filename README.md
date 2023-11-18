@@ -38,5 +38,3 @@ The user of this application is an individual who is beginning to venture into c
 ##### User Awareness
 
 Some items are simulated, for example, the 'add some sugar' button within the Favorites Page after creating a resource will automatically make a draft post on the social media application 'X'. However, if user testing application does not have X, the action may not work properly.
-
-User functionality to delete favorite education links and favorite cryptos has not been added as of yet (stretch goal)
